@@ -1,0 +1,58 @@
+﻿@page
+@model DCUFINAL.Pages.Alumno.IndexModel
+@{
+}
+ <br />
+
+<h1>Lista de Alumnos</h1>
+<br />
+
+
+<!-- Agrega un formulario de búsqueda -->
+<form method="get">
+    <div class="form-group">
+        <label for="busqueda">Buscar Alumno:</label>
+        <input type="text" id="busqueda" name="busqueda" class="form-control" value="@Request.Query["busqueda"]" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+</form>
+
+<br />
+
+<h1>Lista de Alumnos</h1>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var alumno in Model.ListAlumnos)
+        {
+            <tr>
+                <td>@alumno.id</td>
+                <td>@alumno.ced</td>
+                <td>@alumno.nombre</td>
+                <td>@alumno.apellido</td>
+                <td>@alumno.correo</td>
+                <td>@alumno.telefono</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Alumno/Editar?id=@alumno.id">Editar</a>
+                    <a class="btn btn-primary btn-sm" href="/Alumno/Eliminar?id=@alumno.id">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row mb-3">
+    <div class="col-sm-3 d-grid">
+        <a class="btn btn-outline-primary" href="/" role="button">Cancelar</a>
+    </div>
+</div>

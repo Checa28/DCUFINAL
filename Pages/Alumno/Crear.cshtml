@@ -1,0 +1,65 @@
+﻿@page
+@model DCUFINAL.Pages.Alumno.CrearModel
+@{
+}
+<br />
+<h2>Nuevo alumno</h2>
+@if (Model.errorMessage.Length > 0)
+{
+	<div class='alert alert-warning alert-dismissible fade show' role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label="close"></button>
+	</div>
+}
+<form method="post">
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Cédula</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="cedula" value="@Model.alumnoInfo.ced"/>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Nombre</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="nombre" value="@Model.alumnoInfo.nombre" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Apellido</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="apellido" value="@Model.alumnoInfo.apellido" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Correo</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="correo" value="@Model.alumnoInfo.correo" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Telefono</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="telefono" value="@Model.alumnoInfo.telefono" />
+		</div>
+	</div>
+	@if (Model.Messag.Length > 0)
+	{
+		<div class="row mb-3">
+			<div class="col-sm-9">
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>@Model.Messag</strong>
+					<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label="close"></button>
+				</div>
+			</div>
+		</div>
+	}
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 d-grid">
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</div>
+		<div class="col-sm-3 d-grid">
+			<a class="btn btn-outline-primary" href="/" role="button">Cancelar</a>
+		</div>
+	</div>
+	
+</form>

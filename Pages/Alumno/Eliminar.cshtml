@@ -1,0 +1,25 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    try
+    {
+        string id = Request.Query["id"];
+
+        String connectionString = "Data Source=DESKTOP-E635RGF;Initial Catalog=DB_Gestion_Alumnos;Persist Security Info=True;User ID=userpro;Password=checa";
+        using (SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            String sql = "DELETE FROM Alumno WHERE id_alu=@id ";
+            using (SqlCommand command = new SqlCommand(sql, con))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+    }catch(Exception ex)
+    {
+
+    }
+    Response.Redirect("/Alumno/Index");
+}
